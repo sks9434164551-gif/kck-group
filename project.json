@@ -1,0 +1,22 @@
+{
+  "overview": "KCK Group corporate website with admin dashboard for managing company portfolio, content, and media uploads.",
+  "features": [
+    "Company portfolio with add/edit/delete and logo upload",
+    "Admin dashboard with Home, About, Companies, Contact, Profile tabs",
+    "Core values with photo upload that saves permanently to backend",
+    "Timeline/history with photo upload saved to backend",
+    "Admin profile photo upload saved to backend",
+    "Public site shows all admin-managed content and photos",
+    "Internet Identity authentication",
+    "Responsive corporate design with glassmorphism and animations"
+  ],
+  "category": "corporate-website",
+  "tags": [
+    "corporate",
+    "admin-dashboard",
+    "photo-upload",
+    "portfolio",
+    "kck-group"
+  ],
+  "last_updated": "2026-06-01T07:02:56.664Z"
+}

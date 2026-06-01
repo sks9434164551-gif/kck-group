@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 400 500 600 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --background: 0.99 0 0;
+    --foreground: 0.1 0.01 264;
+    --card: 0.99 0 0;
+    --card-foreground: 0.1 0.01 264;
+    --popover: 0.99 0 0;
+    --popover-foreground: 0.1 0.01 264;
+    --primary: 0.38 0.18 264;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.45 0.15 257;
+    --secondary-foreground: 0.99 0 0;
+    --muted: 0.9 0.02 264;
+    --muted-foreground: 0.5 0.08 264;
+    --accent: 0.75 0.18 71;
+    --accent-foreground: 0.99 0 0;
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.92 0.02 264;
+    --input: 0.95 0.01 264;
+    --ring: 0.38 0.18 264;
+    --chart-1: 0.38 0.18 264;
+    --chart-2: 0.45 0.15 257;
+    --chart-3: 0.75 0.18 71;
+    --chart-4: 0.6 0.15 264;
+    --chart-5: 0.7 0.18 264;
+    --sidebar: 0.99 0 0;
+    --sidebar-foreground: 0.1 0.01 264;
+    --sidebar-primary: 0.38 0.18 264;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.75 0.18 71;
+    --sidebar-accent-foreground: 0.99 0 0;
+    --sidebar-border: 0.92 0.02 264;
+    --sidebar-ring: 0.38 0.18 264;
+
+    --accent-orange: 0.75 0.18 71;
+    --dark-text: 0.1 0.01 264;
+    --primary-blue: 0.38 0.18 264;
+    --secondary-blue: 0.45 0.15 257;
+    --white: 0.99 0 0;
+  }
+
+  .dark {
+    --background: 0.1 0.01 264;
+    --foreground: 0.99 0 0;
+    --card: 0.12 0.02 264;
+    --card-foreground: 0.99 0 0;
+    --popover: 0.11 0.01 264;
+    --popover-foreground: 0.99 0 0;
+    --primary: 0.5 0.2 264;
+    --primary-foreground: 0.1 0.01 264;
+    --secondary: 0.55 0.18 257;
+    --secondary-foreground: 0.99 0 0;
+    --muted: 0.3 0.02 264;
+    --muted-foreground: 0.7 0.08 264;
+    --accent: 0.75 0.18 71;
+    --accent-foreground: 0.1 0.01 264;
+    --destructive: 0.6 0.2 27;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.2 0.02 264;
+    --input: 0.2 0.02 264;
+    --ring: 0.5 0.2 264;
+    --chart-1: 0.5 0.2 264;
+    --chart-2: 0.55 0.18 257;
+    --chart-3: 0.75 0.18 71;
+    --chart-4: 0.65 0.18 264;
+    --chart-5: 0.75 0.18 264;
+    --sidebar: 0.12 0.02 264;
+    --sidebar-foreground: 0.99 0 0;
+    --sidebar-primary: 0.5 0.2 264;
+    --sidebar-primary-foreground: 0.1 0.01 264;
+    --sidebar-accent: 0.75 0.18 71;
+    --sidebar-accent-foreground: 0.1 0.01 264;
+    --sidebar-border: 0.2 0.02 264;
+    --sidebar-ring: 0.5 0.2 264;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

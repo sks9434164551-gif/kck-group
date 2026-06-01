@@ -1,0 +1,149 @@
+// Version: 1.0.0
+type AboutContent__162008719 =
+  {
+    missionText : Text;
+    timeline : [TimelineItem__1015838864];
+    values : [ValueItem__650115986];
+    visionText : Text
+  };
+type AdminProfile__388986813 =
+  {
+    bio : Text;
+    joinedAt : Int;
+    name : Text;
+    photoUrl : Text;
+    principalId : Text;
+    role : Text
+  };
+type CompanyId__78853864 = Nat;
+type Company__1022829239 =
+  {
+    countries : Nat;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    employees : Nat;
+    id : CompanyId__78853864;
+    industry : Text;
+    isActive : Bool;
+    logoUrl : ExternalBlob__671167343;
+    name : Text;
+    websiteUrl : Text;
+    yearsActive : Nat
+  };
+type ContactId__479742040 = Nat;
+type ContactInfo__961202325 =
+  {
+    address : Text;
+    email : Text;
+    facebookUrl : Text;
+    linkedinUrl : Text;
+    mapUrl : Text;
+    phone : Text;
+    twitterUrl : Text
+  };
+type ContactSubmission__93684224 =
+  {
+    email : Text;
+    id : ContactId__479742040;
+    message : Text;
+    name : Text;
+    phone : Text;
+    submittedAt : Timestamp__301639476
+  };
+type Data__80296667<K, V> =
+  {var count : Nat__1040412405; kvs : [var ?(K, V)]};
+type ExternalBlob__671167343 = Blob;
+type HomeContent__956059026 =
+  {
+    button1Label : Text;
+    button2Label : Text;
+    heroBadge : Text;
+    heroSubtitle : Text;
+    heroTitle : Text;
+    stat1Label : Text;
+    stat1Value : Text;
+    stat2Label : Text;
+    stat2Value : Text;
+    stat3Label : Text;
+    stat3Value : Text;
+    stat4Label : Text;
+    stat4Value : Text
+  };
+type Internal__41346355<K, V> =
+  {children : [var ?Node__1000929467<K, V>]; data : Data__80296667<K, V>};
+type Leaf__712614010<K, V> = {data : Data__80296667<K, V>};
+type Map__222667396<K, V> = Map__912772452<K, V>;
+type Map__709709801<K, V> =
+  {var root : Node__1000929467<K, V>; var size : Nat__1040412405};
+type Map__912772452<K, V> = Map__709709801<K, V>;
+type Nat__1040412405 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__1000929467<K, V> =
+  {#internal : Internal__41346355<K, V>; #leaf : Leaf__712614010<K, V>};
+type TimelineItem__1015838864 =
+  {description : Text; imageUrl : Text; title : Text; year : Text};
+type Timestamp__301639476 = Int;
+type UserRole__1073662873 = {#admin; #guest; #user};
+type User__933515552 =
+  {displayName : Text; principalId : Text; registeredAt : Int};
+type ValueItem__650115986 =
+  {description : Text; icon : Text; imageUrl : Text; title : Text};
+actor {
+  stable aboutContent : {var value : ?AboutContent__162008719};
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__222667396<Principal, UserRole__1073662873>
+    };
+  stable adminProfile : {var value : ?AdminProfile__388986813};
+  stable companies :
+    {
+      var blockIndex : Nat__1040412405;
+      var blocks : [var [var ?Company__1022829239]];
+      var elementIndex : Nat__1040412405
+    };
+  stable contactInfo : {var value : ?ContactInfo__961202325};
+  stable contacts :
+    {
+      var blockIndex : Nat__1040412405;
+      var blocks : [var [var ?ContactSubmission__93684224]];
+      var elementIndex : Nat__1040412405
+    };
+  stable counterState :
+    {
+      var nextCompanyId : CompanyId__78853864;
+      var nextContactId : ContactId__479742040
+    };
+  stable defaultContactInfo :
+    {
+      address : Text;
+      email : Text;
+      facebookUrl : Text;
+      linkedinUrl : Text;
+      mapUrl : Text;
+      phone : Text;
+      twitterUrl : Text
+    };
+  stable defaultHomeContent :
+    {
+      button1Label : Text;
+      button2Label : Text;
+      heroBadge : Text;
+      heroSubtitle : Text;
+      heroTitle : Text;
+      stat1Label : Text;
+      stat1Value : Text;
+      stat2Label : Text;
+      stat2Value : Text;
+      stat3Label : Text;
+      stat3Value : Text;
+      stat4Label : Text;
+      stat4Value : Text
+    };
+  stable homeContent : {var value : ?HomeContent__956059026};
+  stable users :
+    {
+      var root : Node__1000929467<Text, User__933515552>;
+      var size : Nat__1040412405
+    }
+};

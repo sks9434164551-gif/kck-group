@@ -1,0 +1,162 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type ValueItem = 
+ record {
+   description: text;
+   icon: text;
+   imageUrl: text;
+   title: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type User = 
+ record {
+   displayName: text;
+   principalId: text;
+   registeredAt: int;
+ };
+type Timestamp = int;
+type TimelineItem = 
+ record {
+   description: text;
+   imageUrl: text;
+   title: text;
+   year: text;
+ };
+type HomeContent = 
+ record {
+   button1Label: text;
+   button2Label: text;
+   heroBadge: text;
+   heroSubtitle: text;
+   heroTitle: text;
+   stat1Label: text;
+   stat1Value: text;
+   stat2Label: text;
+   stat2Value: text;
+   stat3Label: text;
+   stat3Value: text;
+   stat4Label: text;
+   stat4Value: text;
+ };
+type ExternalBlob = blob;
+type ContactSubmission = 
+ record {
+   email: text;
+   id: ContactId;
+   message: text;
+   name: text;
+   phone: text;
+   submittedAt: Timestamp;
+ };
+type ContactInfo = 
+ record {
+   address: text;
+   email: text;
+   facebookUrl: text;
+   linkedinUrl: text;
+   mapUrl: text;
+   phone: text;
+   twitterUrl: text;
+ };
+type ContactId = nat;
+type CompanyInput = 
+ record {
+   countries: nat;
+   description: text;
+   employees: nat;
+   industry: text;
+   isActive: bool;
+   logoUrl: ExternalBlob;
+   name: text;
+   websiteUrl: text;
+   yearsActive: nat;
+ };
+type CompanyId = nat;
+type Company = 
+ record {
+   countries: nat;
+   createdAt: Timestamp;
+   description: text;
+   employees: nat;
+   id: CompanyId;
+   industry: text;
+   isActive: bool;
+   logoUrl: ExternalBlob;
+   name: text;
+   websiteUrl: text;
+   yearsActive: nat;
+ };
+type Analytics = 
+ record {
+   companyCount: nat;
+   maxYearsActive: nat;
+   totalCountries: nat;
+   totalEmployees: nat;
+ };
+type AdminProfile = 
+ record {
+   bio: text;
+   joinedAt: int;
+   name: text;
+   photoUrl: text;
+   principalId: text;
+   role: text;
+ };
+type AboutContent = 
+ record {
+   missionText: text;
+   timeline: vec TimelineItem;
+   values: vec ValueItem;
+   visionText: text;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  addCompany: (input: CompanyInput) -> (Company);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  deleteCompany: (id: CompanyId) -> (bool);
+  getAboutContent: () -> (AboutContent) query;
+  getAdminProfile: () -> (opt AdminProfile) query;
+  getAllUsers: () -> (vec User) query;
+  getAnalytics: () -> (Analytics) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getCompanies: () -> (vec Company) query;
+  getContactInfo: () -> (ContactInfo) query;
+  getContactSubmissions: () -> (vec ContactSubmission) query;
+  getHomeContent: () -> (HomeContent) query;
+  getUser: () -> (opt User) query;
+  isCallerAdmin: () -> (bool) query;
+  registerUser: () -> (User);
+  submitContact: (name: text, email: text, phone: text, message: text) ->
+   (ContactSubmission);
+  updateAboutContent: (input: AboutContent) -> (bool);
+  updateCompany: (id: CompanyId, input: CompanyInput) -> (bool);
+  updateContactInfo: (input: ContactInfo) -> (bool);
+  updateHomeContent: (input: HomeContent) -> (bool);
+  updateUserDisplayName: (displayName: text) -> (User);
+  upsertAdminProfile: (input: AdminProfile) -> (bool);
+}
